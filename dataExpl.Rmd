@@ -1,0 +1,34 @@
+---
+title: "Travel Companies"
+author: Rishab Ravi
+output: pdf_document
+---
+
+This dataset was obtained from *findinall.com*.  
+It consists of the names of 245 travel companies along with its  
+employee size, year of establishment, address and contact info.  
+```{r}
+##Reading dataset
+comp <- read.csv("travelCompaniesList.csv")
+
+##initialization
+year <- comp$Year.Established
+sYear <- subset(year,year>1900)
+empSize <- subset(comp$No..of.employees,comp$No..of.employees>0)
+##some of them haven't been reported
+
+##visualization
+head(comp)
+```
+
+```{r}
+##mean year
+round(mean(sYear))
+##histogram of Year established
+hist(sYear,main="Year Established Distribution",xlab="Year",
+     col="blue",border = "green")
+##mean no. of employees
+round(mean(empSize))
+```
+
+The mean employee size is around 144 and year of establishment is around 2008.  
